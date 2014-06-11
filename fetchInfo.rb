@@ -2,11 +2,9 @@
 require 'httpclient'
 require 'nokogiri'
 
-
-
    def get_page n 
       client = HTTPClient.new
-      uri = 'http://wszw.hzs.mofcom.gov.cn/fecp/fem/corp/fem_cert_stat_view_list.jsp'
+      uri = 'http://wszw.hzs.mofcom.gov.cn/fecp/fem/corp/fem_cert_stat_view_list.jsp?manage=0&check_dte_nian=1980&check_dte_nian2=2013&check_dte_yue=01&check_dte_yue2=12&CERT_NO=&COUNTRY_CN_NA=&CORP_NA_CN=&CHECK_DTE='
       body = "Grid1toPageNo=#{n}&Grid1CurrentPage=2&PageFlag=1"
       extheader = {
 	    'POST' => '/fecp/fem/corp/fem_cert_stat_view_list.jsp HTTP/1.1',
@@ -35,7 +33,7 @@ require 'nokogiri'
    result_file = File.new("out.csv", "w")
    result_file.puts "证书号, 国家/地区, 境内投资主体, 境外投资企业（机构）, 省市, 经营范围, 核准日期, 境外注册日期"
 
-   for i in 1..1404
+   for i in 1176..1345
       content = get_page i
       page = Nokogiri::HTML(content)
       page.css("tr[class='listTableBody']").each do |line|

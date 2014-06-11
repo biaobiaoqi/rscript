@@ -1,5 +1,10 @@
 I put my little ruby snippets here.
 
+To run the code:
+```
+gem install bundler
+bundle install
+```
 
 * fetchInfo.rb: Fetch data from [境外投资企业（机构）名录](http://wszw.hzs.mofcom.gov.cn/fecp/fem/corp/fem_cert_stat_view_list.jsp). There are 1404 pages and using POST to get a page.
 
